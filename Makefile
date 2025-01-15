@@ -16,20 +16,6 @@ pg_user := $(shell python -m authentik.lib.config postgresql.user 2>/dev/null)
 pg_host := $(shell python -m authentik.lib.config postgresql.host 2>/dev/null)
 pg_name := $(shell python -m authentik.lib.config postgresql.name 2>/dev/null)
 
-CODESPELL_ARGS = -D - -D .github/codespell-dictionary.txt \
-		-I .github/codespell-words.txt \
-		-S 'web/src/locales/**' \
-		-S 'website/docs/developer-docs/api/reference/**' \
-		authentik \
-		internal \
-		cmd \
-		web/src \
-		website/src \
-		website/blog \
-		website/docs \
-		website/integrations \
-		website/src
-
 all: lint-fix lint test gen web  ## Lint, build, and test everything
 
 HELP_WIDTH := $(shell grep -h '^[a-z][^ ]*:.*\#\#' $(MAKEFILE_LIST) 2>/dev/null | \
@@ -55,23 +41,22 @@ test-docker:  ## Run all tests in a docker-compose
 	rm -f .env
 
 test: ## Run the server tests and produce a coverage report (locally)
-	coverage run manage.py test --keepdb authentik
-	coverage html
-	coverage report
+	poetry run coverage run manage.py test --keepdb authentik
+	poetry run coverage html
+	poetry run coverage report
 
 lint-fix: lint-codespell  ## Lint and automatically fix errors in the python source code. Reports spelling errors.
-	black $(PY_SOURCES)
-	ruff check --fix $(PY_SOURCES)
+	poetry run black $(PY_SOURCES)
+	poetry run ruff check --fix $(PY_SOURCES)
 
 lint-codespell:  ## Reports spelling errors.
-	codespell -w $(CODESPELL_ARGS)
+	poetry run codespell -w
 
 lint: ## Lint the python and golang sources
-	bandit -r $(PY_SOURCES) -x web/node_modules -x tests/wdio/node_modules -x website/node_modules
-	golangci-lint run -v
 
 core-install:
-	poetry install
+	poetry run bandit -c pyproject.toml -r $(PY_SOURCES)
+	golangci-lint run -v internal/...
 
 migrate: ## Run the Authentik Django server's migrations
 	python -m lifecycle.migrate
@@ -193,7 +178,7 @@ gen-client-go: gen-clean-go  ## Build and install the authentik API for Golang
 	rm -rf ./${GEN_API_GO}/config.yaml ./${GEN_API_GO}/templates/
 
 gen-dev-config:  ## Generate a local development config file
-	python -m scripts.generate_config
+	poetry run python scripts/generate_config.py
 
 gen: gen-build gen-client-ts
 
@@ -274,16 +259,16 @@ ci--meta-debug:
 	node --version
 
 ci-black: ci--meta-debug
-	black --check $(PY_SOURCES)
+	poetry run black --check $(PY_SOURCES)
 
 ci-ruff: ci--meta-debug
-	ruff check $(PY_SOURCES)
+	poetry run ruff check $(PY_SOURCES)
 
 ci-codespell: ci--meta-debug
-	codespell $(CODESPELL_ARGS) -s
+	poetry run codespell -s
 
 ci-bandit: ci--meta-debug
-	bandit -r $(PY_SOURCES)
+	poetry run bandit -r $(PY_SOURCES)
 
 ci-pending-migrations: ci--meta-debug
 	ak makemigrations --check

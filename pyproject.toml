@@ -4,6 +4,31 @@ version = "2024.12.2"
 description = ""
 authors = ["authentik Team <hello@goauthentik.io>"]
 
+[tool.bandit]
+exclude_dirs = ["**/node_modules/**"]
+
+[tool.codespell]
+skip = [
+    "**/node_modules",
+    "**/package-lock.json",
+    "authentik",
+    "schema.yml",
+    "schema.yaml",
+    "schema.json",
+    "go.sum",
+    "cmd",
+    "internal",
+    "web/src",
+    "locale",
+    "**/web/xliff/**",
+    "website/blog/**",
+    "website/docs/**",
+    "website/integrations/**",
+    "website/src/**",
+    "*.api.mdx",
+]
+dictionary = ".github/codespell-dictionary.txt,-"
+ignore-words = ".github/codespell-words.txt"
 [tool.black]
 line-length = 100
 target-version = ['py312']
