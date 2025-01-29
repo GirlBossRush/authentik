@@ -2,7 +2,7 @@
 title: Remote Access Control (RAC) Provider
 ---
 
-<span class="badge badge--primary">Enterprise</span>
+<span className="badge badge--primary">Enterprise</span>
 
 ---
 

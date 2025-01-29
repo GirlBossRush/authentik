@@ -5,7 +5,7 @@ sidebar_label: SonarQube
 
 # Integrate with SonarQube
 
-<span class="badge badge--primary">Support level: Community</span>
+<span className="badge badge--primary">Support level: Community</span>
 
 ## What is SonarQube
 

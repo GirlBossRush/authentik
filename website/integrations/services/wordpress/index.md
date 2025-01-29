@@ -5,7 +5,7 @@ sidebar_label: WordPress
 
 # Integrate with WordPress
 
-<span class="badge badge--secondary">Support level: Community</span>
+<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is WordPress
 

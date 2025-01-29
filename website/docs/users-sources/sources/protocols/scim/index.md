@@ -2,7 +2,7 @@
 title: SCIM Source
 ---
 
-<span class="badge badge--preview">Preview</span>
+<span className="badge badge--preview">Preview</span>
 
 ---
 

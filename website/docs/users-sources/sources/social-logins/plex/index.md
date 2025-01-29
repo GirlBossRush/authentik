@@ -2,7 +2,7 @@
 title: Plex
 ---
 
-<span class="badge badge--secondary">Support level: Community</span>
+<span className="badge badge--secondary">Support level: Community</span>
 
 Allows users to authenticate using their Plex credentials
 

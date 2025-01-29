@@ -2,7 +2,7 @@
 title: Redirect stage
 ---
 
-<span class="badge badge--version">authentik 2024.12+</span>
+<span className="badge badge--version">authentik 2024.12+</span>
 
 ---
 

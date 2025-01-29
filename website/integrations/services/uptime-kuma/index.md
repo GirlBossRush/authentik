@@ -5,7 +5,7 @@ sidebar_label: Uptime Kuma
 
 # Integrate with Uptime Kuma
 
-<span class="badge badge--secondary">Support level: Community</span>
+<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Uptime Kuma
 
@@ -53,8 +53,8 @@ Create an application in authentik. Create a Proxy provider with the following p
     ^/upload/.*
     ```
 
-    Alternatively, you can get even more specific by analyzing the requests for your status pages and modifying the regex rules above accordingly.  
-     For example:
+    Alternatively, you can get even more specific by analyzing the requests for your status pages and modifying the regex rules above accordingly.
+    For example:
 
     ```
     ^/status/<slug>$

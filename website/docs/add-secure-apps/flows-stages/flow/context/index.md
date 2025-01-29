@@ -62,7 +62,7 @@ When an unauthenticated user attempts to access a secured resource, they are red
 
 When a user authenticates/enrolls via an external source, this will be set to the source they are using.
 
-#### `outpost` (dictionary) <span class="badge badge--version">authentik 2024.10+</span>
+#### `outpost` (dictionary) <span className="badge badge--version">authentik 2024.10+</span>
 
 When a flow is executed by an Outpost (for example the [LDAP](../../../providers/ldap/index.md) or [RADIUS](../../../providers/radius/index.mdx)), this will be set to a dictionary containing the Outpost instance under the key `"instance"`.
 
@@ -76,7 +76,7 @@ This key is set to `True` when the flow is executed from an "SSO" context. For e
 
 This key is set when a flow execution is continued from a token. This happens for example when an [Email stage](../../stages/email/index.mdx) is used and the user clicks on the link within the email. The token object contains the key that was used to restore the flow execution.
 
-#### `is_redirected` (Flow object) <span class="badge badge--version">authentik 2024.12+</span>
+#### `is_redirected` (Flow object) <span className="badge badge--version">authentik 2024.12+</span>
 
 This key is set when the current flow was reached through a [Redirect stage](../../stages/redirect/index.md) in Flow mode.
 
@@ -98,7 +98,7 @@ URL that the form will be submitted to.
 
 Key-value pairs of the data that is included in the form and will be submitted to `url`.
 
-#### Captcha stage <span class="badge badge--version">authentik 2024.6+</span>
+#### Captcha stage <span className="badge badge--version">authentik 2024.6+</span>
 
 ##### `captcha` (dictionary)
 
@@ -118,7 +118,7 @@ An optional list of all permissions that will be given to the application by gra
 
 #### Deny stage
 
-##### `deny_message` (string) <span class="badge badge--version">authentik 2023.10+</span>
+##### `deny_message` (string) <span className="badge badge--version">authentik 2023.10+</span>
 
 Optionally overwrite the deny message shown, has a higher priority than the message configured in the stage.
 
@@ -134,7 +134,7 @@ If set, this must be a list of group objects and not group names.
 
 Path the `pending_user` will be written to. If not set in the flow, falls back to the value set in the user_write stage, and otherwise to the `users` path.
 
-##### `user_type` (string) <span class="badge badge--version">authentik 2023.10+</span>
+##### `user_type` (string) <span className="badge badge--version">authentik 2023.10+</span>
 
 Type the `pending_user` will be created as. Must be one of `internal`, `external` or `service_account`.
 
@@ -198,7 +198,7 @@ If _Show matched user_ is disabled, this key will be set to the user identifier 
 
 #### Redirect stage
 
-##### `redirect_stage_target` (string) <span class="badge badge--version">authentik 2024.12+</span>
+##### `redirect_stage_target` (string) <span className="badge badge--version">authentik 2024.12+</span>
 
 [Set this key](../../../../customize/policies/expression/managing_flow_context_keys.md) in an Expression Policy to override [Redirect stage](../../stages/redirect/index.md) to force it to redirect to a certain URL or flow. This is useful when a flow requires that the redirection target be decided dynamically.
 

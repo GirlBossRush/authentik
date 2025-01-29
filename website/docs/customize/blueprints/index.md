@@ -2,7 +2,7 @@
 title: Blueprints
 ---
 
-<span class="badge badge--version">authentik 2022.8+</span>
+<span className="badge badge--version">authentik 2022.8+</span>
 
 ---
 
@@ -58,7 +58,7 @@ To push a blueprint to an OCI-compatible registry, [ORAS](https://oras.land/) ca
 oras push ghcr.io/<username>/blueprint/<blueprint name>:latest <yaml file>:application/vnd.goauthentik.blueprint.v1+yaml
 ```
 
-## Storage - Internal <span class="badge badge--version">authentik 2023.1+</span>
+## Storage - Internal <span className="badge badge--version">authentik 2023.1+</span>
 
 Blueprints can be stored in authentik's database, which allows blueprints to be managed via external configuration management tools like Terraform.
 

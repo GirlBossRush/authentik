@@ -5,7 +5,7 @@ sidebar_label: Matrix Synapse
 
 # Integrate with Matrix Synapse
 
-<span class="badge badge--secondary">Support level: Community</span>
+<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Matrix Synapse
 

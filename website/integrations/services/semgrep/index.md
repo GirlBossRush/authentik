@@ -5,7 +5,7 @@ sidebar_label: Semgrep
 
 # Integrate with Semgrep
 
-<span class="badge badge--secondary">Support level: Community</span>
+<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Semgrep
 

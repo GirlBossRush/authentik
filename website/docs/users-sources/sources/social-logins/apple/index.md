@@ -2,7 +2,7 @@
 title: Apple
 ---
 
-<span class="badge badge--primary">Support level: authentik</span>
+<span className="badge badge--primary">Support level: authentik</span>
 
 Allows users to authenticate using their Apple ID.
 

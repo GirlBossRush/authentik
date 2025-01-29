@@ -5,7 +5,7 @@ sidebar_label: The Lounge
 
 # Integrate with The Lounge
 
-<span class="badge badge--secondary">Support level: Community</span>
+<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is The Lounge
 

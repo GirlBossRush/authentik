@@ -5,7 +5,7 @@ sidebar_label: SharePoint Server SE
 
 # Integrate with SharePoint Server SE
 
-<span class="badge badge--secondary">Support level: Community</span>
+<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Microsoft SharePoint
 

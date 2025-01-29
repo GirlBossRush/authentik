@@ -5,7 +5,7 @@ sidebar_label: FortiGate SSLVPN
 
 # Integrate with FortiGate SSLVPN
 
-<span class="badge badge--secondary">Support level: Community</span>
+<span className="badge badge--secondary">Support level: Community</span>
 
 ## FortiGate SSLVPN
 

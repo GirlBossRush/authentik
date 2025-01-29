@@ -2,8 +2,8 @@
 title: Microsoft Entra ID provider
 ---
 
-<span class="badge badge--primary">Enterprise</span>
-<span class="badge badge--preview">Preview</span>
+<span className="badge badge--primary">Enterprise</span>
+<span className="badge badge--preview">Preview</span>
 
 ---
 

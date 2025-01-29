@@ -5,7 +5,7 @@ sidebar_label: Kimai
 
 # Integrate with Kimai
 
-<span class="badge badge--secondary">Support level: Community</span>
+<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Kimai
 

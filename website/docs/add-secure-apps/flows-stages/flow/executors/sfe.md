@@ -2,7 +2,7 @@
 title: Simplified flow executor
 ---
 
-<span class="badge badge--version">authentik 2024.6.1+</span>
+<span className="badge badge--version">authentik 2024.6.1+</span>
 
 A simplified web-based flow executor that authentik automatically uses for older browsers that do not support modern web technologies.
 

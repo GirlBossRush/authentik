@@ -2,7 +2,7 @@
 title: Facebook
 ---
 
-<span class="badge badge--secondary">Support level: Community</span>
+<span className="badge badge--secondary">Support level: Community</span>
 
 Adding Facebook as a source allows users to authenticate through authentik using their Facebook credentials.
 

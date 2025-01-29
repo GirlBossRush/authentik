@@ -176,6 +176,6 @@ When a _Signing Key_ is selected in the provider, the JWT will be signed asymmet
 
 When no _Signing Key_ is selected, the JWT will be signed symmetrically with the _Client secret_ of the provider, which can be seen in the provider settings.
 
-### Encryption <span class="badge badge--version">authentik 2024.10+</span>
+### Encryption <span className="badge badge--version">authentik 2024.10+</span>
 
 authentik can also encrypt JWTs (turning them into JWEs) it issues by selecting an _Encryption Key_ in the provider. When selected, all JWTs will be encrypted symmetrically using the selected certificate. authentik uses the `RSA-OAEP-256` algorithm with the `A256CBC-HS512` encryption method.

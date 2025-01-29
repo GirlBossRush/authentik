@@ -2,7 +2,7 @@
 title: Github
 ---
 
-<span class="badge badge--primary">Support level: authentik</span>
+<span className="badge badge--primary">Support level: authentik</span>
 
 Allows users to authenticate using their Github credentials
 
@@ -50,7 +50,7 @@ Save, and you now have Github as a source.
 For more details on how-to have the new source display on the Login Page see [here](../../index.md#add-sources-to-default-login-page).
 :::
 
-### Checking for membership of a GitHub Organisation <span class="badge badge--version">authentik 2021.12.5.+</span>
+### Checking for membership of a GitHub Organisation <span className="badge badge--version">authentik 2021.12.5.+</span>
 
 To check if the user is member of an organisation, you can use the following policy on your flows:
 

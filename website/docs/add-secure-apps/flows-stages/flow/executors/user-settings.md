@@ -2,7 +2,7 @@
 title: User settings
 ---
 
-<span class="badge badge--version">authentik 2023.3+</span>
+<span className="badge badge--version">authentik 2023.3+</span>
 
 ---
 

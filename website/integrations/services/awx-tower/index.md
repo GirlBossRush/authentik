@@ -5,7 +5,7 @@ sidebar_label: Red Hat Ansible Automation Platform / AWX
 
 # Integrate with Red Hat Ansible Automation Platform / AWX
 
-<span class="badge badge--secondary"></span>
+<span className="badge badge--secondary"></span>
 
 ## What is Tower
 

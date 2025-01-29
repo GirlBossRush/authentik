@@ -2,7 +2,7 @@
 title: Azure AD
 ---
 
-<span class="badge badge--secondary">Support level: Community</span>
+<span className="badge badge--secondary">Support level: Community</span>
 
 ## Preparation
 
@@ -112,7 +112,7 @@ return True
 
 Try to login with a **_new_** user. You should see no prompts and the user should have the correct information.
 
-### Machine-to-machine authentication <span class="badge badge--version">authentik 2024.12+</span>
+### Machine-to-machine authentication <span className="badge badge--version">authentik 2024.12+</span>
 
 If using [Machine-to-Machine](../../../../add-secure-apps/providers/oauth2/client_credentials.md#jwt-authentication) authentication, some specific steps need to be considered.
 

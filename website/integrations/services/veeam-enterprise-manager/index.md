@@ -5,7 +5,7 @@ sidebar_label: Veeam Enterprise Manager
 
 # Integrate with Veeam Enterprise Manager
 
-<span class="badge badge--secondary">Support level: Community</span>
+<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Veeam Enterprise Manager
 
