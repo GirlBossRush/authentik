@@ -3,8 +3,6 @@ title: Integrate with GitHub Organization
 sidebar_label: GitHub Organization
 ---
 
-# Integrate with GitHub Organization
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is GitHub Organizations

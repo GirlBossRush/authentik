@@ -3,8 +3,6 @@ title: Integrate with ProFTPD
 sidebar_label: ProFTPD
 ---
 
-# Integrate with ProFTPD
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is ProFTPD

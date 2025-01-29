@@ -3,8 +3,6 @@ title: Integrate with Tautulli
 sidebar_label: Tautulli
 ---
 
-# Integrate with Tautulli
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Tautulli

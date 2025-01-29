@@ -3,8 +3,6 @@ title: Integrate with Bookstack
 sidebar_label: Bookstack
 ---
 
-# Integrate with Bookstack
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Bookstack

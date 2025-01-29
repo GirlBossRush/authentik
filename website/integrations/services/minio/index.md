@@ -3,8 +3,6 @@ title: Integrate with MinIO
 sidebar_label: MinIO
 ---
 
-# Integrate with MinIO
-
 <span className="badge badge--primary">Support level: authentik</span>
 
 ## What is MinIO

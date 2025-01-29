@@ -3,8 +3,6 @@ title: Integrate with VMware vCenter
 sidebar_label: VMware vCenter
 ---
 
-# Integrate with VMware vCenter
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is vCenter

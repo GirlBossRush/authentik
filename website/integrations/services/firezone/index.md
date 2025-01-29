@@ -3,8 +3,6 @@ title: Integrate with Firezone
 sidebar_label: Firezone
 ---
 
-# Integrate with Firezone
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Firezone

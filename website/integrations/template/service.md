@@ -3,8 +3,6 @@ title: Integrate with Service Name
 sidebar_label: Service Name
 ---
 
-# Integrate with Service Name
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Service-Name

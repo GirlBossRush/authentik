@@ -3,8 +3,6 @@ title: Integrate with Gitea
 sidebar_label: Gitea
 ---
 
-# Integrate with Gitea
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Gitea

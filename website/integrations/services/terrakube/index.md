@@ -3,8 +3,6 @@ title: Integrate with Terrakube
 sidebar_label: Terrakube
 ---
 
-# Integrate with Terrakube
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Terrakube

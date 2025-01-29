@@ -3,8 +3,6 @@ title: Integrate with Zulip
 sidebar_label: Zulip
 ---
 
-# Integrate with Zulip
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Zulip

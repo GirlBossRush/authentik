@@ -3,8 +3,6 @@ title: Integrate with GitHub Enterprise Cloud
 sidebar_label: GitHub Enterprise Cloud
 ---
 
-# Integrate with GitHub Enterprise Cloud
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is GitHub Enterprise Cloud

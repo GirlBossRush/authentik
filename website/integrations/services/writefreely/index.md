@@ -3,8 +3,6 @@ title: Integrate with Writefreely
 sidebar_label: Writefreely
 ---
 
-# Integrate with Writefreely
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Writefreely

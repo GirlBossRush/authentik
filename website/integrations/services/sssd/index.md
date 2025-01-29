@@ -3,8 +3,6 @@ title: Integrate with sssd
 sidebar_label: sssd
 ---
 
-# Integrate with sssd
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is sssd

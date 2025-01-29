@@ -3,8 +3,6 @@ title: Integrate with HedgeDoc
 sidebar_label: HedgeDoc
 ---
 
-# Integrate with HedgeDoc
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is HedgeDoc

@@ -3,8 +3,6 @@ title: Integrate with Amazon Web Services
 sidebar_label: Amazon Web Services
 ---
 
-# Integrate with Amazon Web Services
-
 <span className="badge badge--primary">Support level: authentik</span>
 
 ## What is AWS

@@ -3,8 +3,6 @@ title: Integrate with Matrix Synapse
 sidebar_label: Matrix Synapse
 ---
 
-# Integrate with Matrix Synapse
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Matrix Synapse

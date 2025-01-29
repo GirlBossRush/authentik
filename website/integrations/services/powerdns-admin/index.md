@@ -3,8 +3,6 @@ title: Integrate with PowerDNS-Admin
 sidebar_label: PowerDNS-Admin
 ---
 
-# Integrate with PowerDNS-Admin
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is PowerDNS-Admin

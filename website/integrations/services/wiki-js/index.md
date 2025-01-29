@@ -3,8 +3,6 @@ title: Integrate with Wiki.js
 sidebar_label: Wiki.js
 ---
 
-# Integrate with Wiki.js
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Wiki.js

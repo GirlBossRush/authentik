@@ -3,8 +3,6 @@ title: Integrate with Hashicorp Vault
 sidebar_label: Hashicorp Vault
 ---
 
-# Integrate with Hashicorp Vault
-
 <span className="badge badge--primary">Support level: authentik</span>
 
 ## What is Vault

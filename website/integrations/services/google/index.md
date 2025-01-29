@@ -3,8 +3,6 @@ title: Integrate with Google Workspace
 sidebar_label: Google Workspace
 ---
 
-# Integrate with Google Workspace
-
 <span className="badge badge--primary">Support level: authentik</span>
 
 ## What is Google Workspace

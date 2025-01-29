@@ -3,8 +3,6 @@ title: Integrate with Rancher
 sidebar_label: Rancher
 ---
 
-# Integrate with Rancher
-
 <span className="badge badge--primary">Support level: authentik</span>
 
 ## What is Rancher

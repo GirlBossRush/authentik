@@ -3,8 +3,6 @@ title: Integrate with Roundcube
 sidebar_label: Roundcube
 ---
 
-# Integrate with Roundcube
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Roundcube

@@ -3,8 +3,6 @@ title: Integrate with HashiCorp Cloud Platform
 sidebar_label: HashiCorp Cloud Platform
 ---
 
-# Integrate with HashiCorp Cloud Platform
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is HashiCorp Cloud

@@ -3,8 +3,6 @@ title: Integrate with MeshCentral
 sidebar_label: MeshCentral
 ---
 
-# Integrate with MeshCentral
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 ## What is MeshCentral

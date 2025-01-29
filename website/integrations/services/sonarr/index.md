@@ -3,8 +3,6 @@ title: Integrate with Sonarr
 sidebar_label: Sonarr
 ---
 
-# Integrate with Sonarr
-
 <span className="badge badge--secondary">Support level: Community</span>
 
 :::note
