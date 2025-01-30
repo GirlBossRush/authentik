@@ -1,9 +1,8 @@
 ---
 title: Integrate with Immich
 sidebar_label: Immich
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Immich
 

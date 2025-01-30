@@ -1,9 +1,8 @@
 ---
 title: Integrate with Oracle Cloud
 sidebar_label: Oracle Cloud
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Oracle Cloud
 

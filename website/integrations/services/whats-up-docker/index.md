@@ -1,9 +1,8 @@
 ---
 title: Integrate with What's Up Docker
 sidebar_label: What's Up Docker
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is What's Up Docker
 

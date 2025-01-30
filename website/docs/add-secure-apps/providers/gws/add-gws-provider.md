@@ -1,10 +1,7 @@
 ---
 title: Create a Google Workspace provider
----
-
-<span className="badge badge--primary">Enterprise</span>
-<span className="badge badge--preview">Preview</span>
-
+authentik_enterprise: true
+authentik_preview: true
 ---
 
 For more information about using a Google Workspace provider, see the [Overview](./index.md) documentation.

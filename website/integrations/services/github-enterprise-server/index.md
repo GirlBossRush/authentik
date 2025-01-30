@@ -1,9 +1,8 @@
 ---
 title: Integrate with GitHub Enterprise Server
 sidebar_label: GitHub Enterprise Server
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is GitHub Enterprise Server
 

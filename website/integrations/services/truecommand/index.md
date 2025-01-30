@@ -1,9 +1,8 @@
 ---
 title: Integrate with TrueNAS TrueCommand
 sidebar_label: TrueNAS TrueCommand
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is TrueNAS TrueCommand
 

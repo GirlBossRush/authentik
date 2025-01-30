@@ -1,9 +1,8 @@
 ---
 title: Integrate with Harbor
 sidebar_label: Harbor
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Harbor
 

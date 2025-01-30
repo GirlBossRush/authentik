@@ -1,9 +1,8 @@
 ---
 title: Integrate with Mastodon
 sidebar_label: Mastodon
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Mastodon
 

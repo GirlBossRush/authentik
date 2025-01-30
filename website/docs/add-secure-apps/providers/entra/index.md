@@ -1,10 +1,7 @@
 ---
 title: Microsoft Entra ID provider
----
-
-<span className="badge badge--primary">Enterprise</span>
-<span className="badge badge--preview">Preview</span>
-
+authentik_enterprise: true
+authentik_preview: true
 ---
 
 With the Microsoft Entra ID provider, authentik serves as the single source of truth for all users and groups. Configuring Entra ID as a provider allows for auto-discovery of user and group accounts, on-going synchronization of user data such as email address, name, and status, and integrated data mapping of field names and values.

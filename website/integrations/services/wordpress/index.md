@@ -1,9 +1,8 @@
 ---
 title: Integrate with WordPress
 sidebar_label: WordPress
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is WordPress
 

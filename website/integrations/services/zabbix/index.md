@@ -1,9 +1,8 @@
 ---
 title: Integrate with Zabbix
 sidebar_label: Zabbix
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Zabbix
 

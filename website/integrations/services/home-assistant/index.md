@@ -1,9 +1,8 @@
 ---
 title: Integrate with Home Assistant
 sidebar_label: Home Assistant
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Home Assistant
 

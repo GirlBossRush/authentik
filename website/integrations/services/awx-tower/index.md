@@ -1,9 +1,8 @@
 ---
 title: Integrate with Red Hat Ansible Automation Platform / AWX
 sidebar_label: Red Hat Ansible Automation Platform / AWX
+support_level: community
 ---
-
-<span className="badge badge--secondary"></span>
 
 ## What is Tower
 

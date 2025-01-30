@@ -1,8 +1,7 @@
 ---
 title: Active Directory
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## Preparation
 

@@ -1,9 +1,8 @@
 ---
 title: Integrate with The Lounge
 sidebar_label: The Lounge
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is The Lounge
 

@@ -1,9 +1,8 @@
 ---
 title: Integrate with Xen Orchestra
 sidebar_label: Xen Orchestra
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Xen Orchestra
 

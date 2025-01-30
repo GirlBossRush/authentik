@@ -1,9 +1,6 @@
 ---
 title: User settings
----
-
-<span className="badge badge--version">authentik 2023.3+</span>
-
+authentik_version: "2023.3"
 ---
 
 The user interface (/if/user/) uses a specialized flow executor to allow individual users to customize their profile. A user's profile consists of key/value fields, so this executor only supports Prompt or User Write stages. If the configured flow contains another stage, a button will be shown to open the default executor.

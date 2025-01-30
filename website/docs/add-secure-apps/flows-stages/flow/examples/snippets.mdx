@@ -2,7 +2,9 @@
 title: Example policy snippets for flows
 ---
 
-### Redirect current flow to another URL <span className="badge badge--version">authentik 2022.7+</span>
+import VersionBadge from "@site/src/components/VersionBadge";
+
+### Redirect current flow to another URL&nbsp;<VersionBadge semver="2022.7" />
 
 ```python
 plan = request.context.get("flow_plan")

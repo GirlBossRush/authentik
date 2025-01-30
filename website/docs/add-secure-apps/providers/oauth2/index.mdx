@@ -2,6 +2,8 @@
 title: OAuth 2.0 provider
 ---
 
+import VersionBadge from "@site/src/components/VersionBadge";
+
 In authentik, you can [create](./create-oauth2-provider.md) an [OAuth 2.0](https://oauth.net/2/) provider that authentik uses to authenticate the user to the associated application. This provider supports both generic OAuth2 as well as OpenID Connect (OIDC).
 
 ## authentik and OAuth 2.0
@@ -112,7 +114,7 @@ The Hybrid Flow is an OpenID Connect flow that incorporates traits of both the I
 
 The client credentials flow and grant types are typically implemented for server-to-server scenarios, when code in a web application invokes a web API.
 
-For more information, see [Machine-to-machine authentication](./client_credentials.md).
+For more information, see [Machine-to-machine authentication](./client_credentials.mdx).
 
 ### 3. Device code
 
@@ -176,6 +178,6 @@ When a _Signing Key_ is selected in the provider, the JWT will be signed asymmet
 
 When no _Signing Key_ is selected, the JWT will be signed symmetrically with the _Client secret_ of the provider, which can be seen in the provider settings.
 
-### Encryption <span className="badge badge--version">authentik 2024.10+</span>
+### Encryption&nbsp;<VersionBadge semver="2024.10" />
 
 authentik can also encrypt JWTs (turning them into JWEs) it issues by selecting an _Encryption Key_ in the provider. When selected, all JWTs will be encrypted symmetrically using the selected certificate. authentik uses the `RSA-OAEP-256` algorithm with the `A256CBC-HS512` encryption method.

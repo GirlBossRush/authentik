@@ -3,6 +3,8 @@ title: Manage groups
 description: "Learn how to work with groups in authentik."
 ---
 
+import VersionBadge from "@site/src/components/VersionBadge";
+
 A group is a collection of users. Refer to the following sections to learn how to create and manage groups, assign users and roles to groups, and how [permissions](../access-control/manage_permissions.md) work on a group level.
 
 ## Create a group
@@ -43,7 +45,7 @@ To delete a group, follow these steps:
 
 You can assign a role to a group, and then all users in the group inherit the permissions assigned to that role. For instructions and more information, see [Assign a role to a group](../roles/manage_roles.md#assign-a-role-to-a-group).
 
-## Delegating group member management <span className="badge badge--version">authentik 2024.4+</span>
+## Delegating group member management&nbsp;<VersionBadge semver="2024.4" />
 
 To give a specific Role or User the ability to manage group members, the following permissions need to be granted on the matching Group object:
 

@@ -1,8 +1,7 @@
 ---
 title: Discord
+support_level: authentik
 ---
-
-<span className="badge badge--primary">Support level: authentik</span>
 
 Allows users to authenticate using their Discord credentials
 

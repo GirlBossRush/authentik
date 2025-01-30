@@ -1,10 +1,7 @@
 ---
 title: Google Workspace provider
----
-
-<span className="badge badge--primary">Enterprise</span>
-<span className="badge badge--preview">Preview</span>
-
+authentik_enterprise: true
+authentik_preview: true
 ---
 
 With the Google Workspace provider, authentik serves as the single source of truth for all users and groups, when using Google products like Gmail.

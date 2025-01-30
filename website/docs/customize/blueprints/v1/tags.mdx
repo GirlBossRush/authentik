@@ -1,10 +1,12 @@
+import VersionBadge from "@site/src/components/VersionBadge";
+
 # YAML Tags
 
 To use the custom tags with your preferred editor, you must make the editor aware of the custom tags.
 
 For VS Code, for example, add these entries to your `settings.json`:
 
-```
+```json
 {
     "yaml.customTags": [
         "!Condition sequence",
@@ -301,7 +303,7 @@ The above example will resolve to something like this:
     - "bar: (index: 2, letter: r)"
 ```
 
-#### `!AtIndex` <span className="badge badge--version">authentik 2024.12+</span>
+#### `!AtIndex`&nbsp;<VersionBadge semver="2024.12" />
 
 Minimal example:
 

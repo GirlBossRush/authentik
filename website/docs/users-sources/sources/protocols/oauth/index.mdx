@@ -2,6 +2,8 @@
 title: OAuth Source
 ---
 
+import VersionBadge from "@site/src/components/VersionBadge";
+
 This source allows users to enroll themselves with an external OAuth-based Identity Provider. The generic provider expects the endpoint to return OpenID-Connect compatible information. Vendor-specific implementations have their own OAuth Source.
 
 - Policies: Allow/Forbid users from linking their accounts with this provider.
@@ -14,7 +16,7 @@ This source allows users to enroll themselves with an external OAuth-based Ident
 
     Starting with authentik 2022.10, the default scopes can be replaced by prefix the value for scopes with `*`.
 
-### OpenID Connect <span className="badge badge--version">authentik 2022.6+</span>
+### OpenID Connect&nbsp;<VersionBadge semver="2022.6" />
 
 #### Well-known
 

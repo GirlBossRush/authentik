@@ -1,9 +1,8 @@
 ---
 title: Integrate with Komga
 sidebar_label: Komga
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Komga
 

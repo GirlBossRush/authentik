@@ -1,9 +1,8 @@
 ---
 title: Integrate with Rocket.chat
 sidebar_label: Rocket.chat
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Rocket.chat
 

@@ -1,10 +1,9 @@
 ---
 title: Blueprints
+authentik_version: "2022.8"
 ---
 
-<span className="badge badge--version">authentik 2022.8+</span>
-
----
+import VersionBadge from "@site/src/components/VersionBadge";
 
 Blueprints offer a new way to template, automate and distribute authentik configuration. Blueprints can be used to automatically configure instances, manage config as code without any external tools, and to distribute application configs.
 
@@ -58,7 +57,7 @@ To push a blueprint to an OCI-compatible registry, [ORAS](https://oras.land/) ca
 oras push ghcr.io/<username>/blueprint/<blueprint name>:latest <yaml file>:application/vnd.goauthentik.blueprint.v1+yaml
 ```
 
-## Storage - Internal <span className="badge badge--version">authentik 2023.1+</span>
+## Storage - Internal&nbsp;<VersionBadge semver="2023.1" />
 
 Blueprints can be stored in authentik's database, which allows blueprints to be managed via external configuration management tools like Terraform.
 

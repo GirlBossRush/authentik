@@ -1,9 +1,8 @@
 ---
 title: Integrate with sssd
 sidebar_label: sssd
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is sssd
 

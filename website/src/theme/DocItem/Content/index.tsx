@@ -1,4 +1,14 @@
-import React, { type ReactNode } from "react";
+/**
+ * @file Swizzled DocItemContent component.
+ *
+ * This component is a swizzled version of the original DocItemContent component.
+ *
+ * Similar to Docusaurus' default `DocItemContent`, this component renders
+ * the content of a documentation page. However, it also adds support for
+ * support badges, and Authentik version badges.
+ */
+
+import React from "react";
 import clsx from "clsx";
 import { ThemeClassNames } from "@docusaurus/theme-common";
 import {
@@ -9,83 +19,70 @@ import Heading from "@theme/Heading";
 import MDXContent from "@theme/MDXContent";
 import type { Props } from "@theme/DocItem/Content";
 import { DocFrontMatter } from "@docusaurus/plugin-content-docs";
-
-/**
- * Title can be declared inside md content or declared through
- * front matter and added manually. To make both cases consistent,
- * the added title is added under the same div.markdown block
- * See https://github.com/facebook/docusaurus/pull/4882#issuecomment-853021120
- *
- * We render a "synthetic title" if:
- * - user doesn't ask to hide it with front matter
- * - the markdown content does not already contain a top-level h1 heading
- */
-function useSyntheticTitle(): string | null {
-    const { metadata, frontMatter, contentTitle } = useDoc();
-    const shouldRender =
-        !frontMatter.hide_title && typeof contentTitle === "undefined";
-    if (!shouldRender) {
-        return null;
-    }
-    return metadata.title;
-}
-
-type SupportLevel = "authentik" | "community" | "deprecated";
+import { useSyntheticTitle } from "@site/src/hooks/title";
+import { SupportBadge } from "@site/src/components/SupportBadge";
+import { VersionBadge } from "@site/src/components/VersionBadge";
 
 interface SwizzledDocFrontMatter extends DocFrontMatter {
-    support_level?: SupportLevel;
+    support_level?: string;
+    authentik_version?: string;
+    authentik_preview: boolean;
+    authentik_enterprise: boolean;
 }
 
 interface SwizzledDocContextValue extends DocContextValue {
     frontMatter: SwizzledDocFrontMatter;
 }
 
-const SupportLevelToLabel = new Map<SupportLevel, string>([
-    ["authentik", "authentik"],
-    ["community", "community"],
-    ["deprecated", "deprecated"],
-]);
-
-const SupportLevelToBadgeClass = new Map<SupportLevel, string>([
-    ["authentik", "badge--primary"],
-    ["community", "badge--secondary"],
-    ["deprecated", "badge--danger"],
-]);
-
-const SupportLevelBadge: React.FC = () => {
+const DocItemContent: React.FC<Props> = ({ children }) => {
+    const syntheticTitle = useSyntheticTitle();
     const { frontMatter } = useDoc() as SwizzledDocContextValue;
-    const { support_level } = frontMatter;
+    const {
+        support_level,
+        authentik_version,
+        authentik_enterprise,
+        authentik_preview,
+    } = frontMatter;
 
-    if (!support_level || !SupportLevelToLabel.has(support_level)) {
-        return null;
+    const badges: JSX.Element[] = [];
+
+    if (authentik_version) {
+        badges.push(<VersionBadge semver={authentik_version} />);
     }
 
-    const label = SupportLevelToLabel.get(support_level);
+    if (support_level) {
+        badges.push(<SupportBadge level={support_level} />);
+    }
 
-    return (
-        <span
-            className={clsx(
-                "badge",
-                SupportLevelToBadgeClass.get(support_level),
-            )}
-        >
-            Support level: {label}
-        </span>
-    );
-};
+    if (authentik_preview) {
+        badges.push(<span className="badge badge--preview">Preview</span>);
+    }
 
-export default function DocItemContent({ children }: Props): ReactNode {
-    const syntheticTitle = useSyntheticTitle();
+    if (authentik_enterprise) {
+        badges.push(<span className="badge badge--primary">Enterprise</span>);
+    }
 
     return (
         <div className={clsx(ThemeClassNames.docs.docMarkdown, "markdown")}>
-            {syntheticTitle && (
+            {syntheticTitle ? (
                 <header>
                     <Heading as="h1">{syntheticTitle}</Heading>
-                    <SupportLevelBadge />
+
+                    {badges.length ? (
+                        <p className="badge-group">
+                            {badges.map((badge, index) => (
+                                <React.Fragment key={index}>
+                                    {badge}
+                                </React.Fragment>
+                            ))}
+                        </p>
+                    ) : null}
                 </header>
-            )}
+            ) : null}
+
             <MDXContent>{children}</MDXContent>
         </div>
     );
-}
+};
+
+export default DocItemContent;

@@ -1,9 +1,8 @@
 ---
 title: Integrate with Gatus
 sidebar_label: Gatus
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Gatus?
 

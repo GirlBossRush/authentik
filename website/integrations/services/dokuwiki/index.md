@@ -1,9 +1,8 @@
 ---
 title: Integrate with DokuWiki
 sidebar_label: DokuWiki
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is DokuWiki
 

@@ -1,9 +1,8 @@
 ---
 title: Integrate with EspoCRM
 sidebar_label: EspoCRM
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is EspoCRM?
 

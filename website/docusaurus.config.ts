@@ -80,7 +80,15 @@ module.exports = async function (): Promise<Config> {
             prism: {
                 theme: prismThemes.oneLight,
                 darkTheme: prismThemes.oneDark,
-                additionalLanguages: ["python", "diff", "json", "http"],
+                additionalLanguages: [
+                    // ---
+                    "apacheconf",
+                    "diff",
+                    "http",
+                    "json",
+                    "nginx",
+                    "python",
+                ],
             },
         },
         presets: [

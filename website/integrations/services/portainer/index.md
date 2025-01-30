@@ -1,9 +1,8 @@
 ---
 title: Integrate with Portainer
 sidebar_label: Portainer
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 ## What is Portainer
 

@@ -1,8 +1,7 @@
 ---
 title: Twitch
+support_level: community
 ---
-
-<span className="badge badge--secondary">Support level: Community</span>
 
 Allows users to authenticate using their Twitch credentials
 
