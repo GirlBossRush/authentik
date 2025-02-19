@@ -17,6 +17,7 @@ module.exports = {
                     type: "category",
                     label: "Chat, Communication & Collaboration",
                     items: [
+                        "services/apple-business-manager/index",
                         "services/bookstack/index",
                         "services/dokuwiki/index",
                         "services/espoCRM/index",
