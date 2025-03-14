@@ -11,6 +11,7 @@
     --white: #e3e3e3;
     --ifm-navbar-link-color: var(--white);
     --ifm-navbar-link-hover-color: var(--ifm-color-gray-1000);
+    --ifm-h4-font-size: 1.125rem;
 }
 
 /* #endregion */
@@ -218,5 +219,53 @@ body {
     /* Remove empty table headers. */
     & table > thead:has(> tr > th:empty):not(:has(> tr > th:not(:empty))) {
         display: none;
+    }
+
+    & > ol > li {
+        list-style: none;
+        counter-increment: ordered-li-h4;
+        position: relative;
+    }
+
+    & > ol > li {
+        margin-top: calc(var(--ifm-list-margin) * 2);
+    }
+
+    & > ol > li > ul {
+        --ifm-list-left-padding: 2.75rem;
+    }
+
+    & > ol > li > ul li > p {
+        --ifm-list-paragraph-margin: 0;
+    }
+
+    & > ol > li::before {
+        display: inline-block;
+        box-shadow: var(--ifm-global-shadow-tl);
+        float: left;
+        content: counter(ordered-li-h4);
+        margin-inline-end: calc(var(--ifm-list-margin) / 2);
+        background-color: var(--ifm-color-emphasis-200);
+        color: var(--ifm-color-emphasis-1000);
+        font-size: 1rem;
+        font-weight: var(--ifm-font-weight-semibold);
+        border: 1px solid var(--ifm-color-emphasis-100);
+        border-radius: 50%;
+        text-align: center;
+        text-indent: 0;
+        text-shadow: -1px 1px var(--ifm-color-emphasis-300);
+        line-height: 1.75;
+        font-family: var(--ifm-font-family-base);
+        width: 1.75em;
+        height: 1.75em;
+        transform: translateY(-0.1em);
+    }
+
+    & > ol > li > ul > li {
+        list-style: square;
+    }
+
+    & > ol > li > ul > li::marker {
+        color: var(--ifm-color-emphasis-400);
     }
 }
