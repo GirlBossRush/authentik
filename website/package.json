@@ -4,13 +4,11 @@
     "license": "MIT",
     "private": true,
     "scripts": {
-        "build": "run-s build:docker build:schema build:api build:docusaurus",
-        "build-bundled": "run-s build:schema build:api build:docusaurus",
+        "build": "run-s build:api build:docusaurus",
+        "build-bundled": "run-s build:api build:docusaurus",
         "build:api": "docusaurus gen-api-docs all",
-        "build:docker": "cp ../docker-compose.yml ./static/docker-compose.yml",
         "build:docusaurus": "cross-env NODE_OPTIONS='--max_old_space_size=65536' docusaurus build",
         "build:integrations": "cross-env NODE_OPTIONS='--max_old_space_size=65536' docusaurus build --config integrations/docusaurus.config.cjs",
-        "build:schema": "cp -f ../schema.yml ./static/schema.yml",
         "deploy": "docusaurus deploy",
         "docusaurus": "docusaurus",
         "lint": "eslint --fix .",
@@ -22,7 +20,7 @@
         "start": "docusaurus start",
         "swizzle": "docusaurus swizzle",
         "test": "node --test",
-        "watch": "run-s build:schema build:api start",
+        "watch": "run-s build:api start",
         "watch:integrations": "docusaurus start --config integrations/docusaurus.config.cjs"
     },
     "dependencies": {
