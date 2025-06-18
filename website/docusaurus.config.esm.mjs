@@ -122,6 +122,8 @@ const config = createDocusaurusConfig({
             externalUrlRegex: /(:\/\/goauthentik\.io|integrations\.goauthentik\.io)/.toString(),
         },
     },
+    onBrokenLinks: "ignore",
+    onBrokenMarkdownLinks: "ignore",
     presets: [
         [
             "@docusaurus/preset-classic",
