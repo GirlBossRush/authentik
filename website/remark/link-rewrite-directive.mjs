@@ -1,7 +1,7 @@
 /**
  * @import { Root } from "mdast";
  */
-import { visit } from "unist-util-visit";
+import { SKIP, visit } from "unist-util-visit";
 
 /**
  * @typedef {[pattern: string | RegExp, replacement: string]} Rewrite
@@ -20,12 +20,15 @@ export function remarkLinkRewrite(rewrites) {
          */
         return async (tree) => {
             visit(tree, (node) => {
-                if (node.type !== "link") return;
+                if (node.type !== "link") return SKIP;
 
                 for (const [pattern, replacement] of map) {
                     if (!node.url.startsWith(pattern)) continue;
+
                     node.url = node.url.replace(pattern, replacement);
                 }
+
+                return SKIP;
             });
         };
     };
