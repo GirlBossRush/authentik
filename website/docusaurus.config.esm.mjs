@@ -9,8 +9,9 @@
  * @import { BuildUrlValues } from "remark-github";
  * @import { ReleasesPluginOptions } from "./releases/plugin.mjs"
  */
-import remarkNPM2Yarn from "@docusaurus/remark-plugin-npm2yarn";
 import { createDocusaurusConfig } from "@goauthentik/docusaurus-config";
+
+import remarkNPM2Yarn from "@docusaurus/remark-plugin-npm2yarn";
 import { cp } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { join, resolve } from "node:path";

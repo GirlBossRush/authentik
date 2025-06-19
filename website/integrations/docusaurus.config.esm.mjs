@@ -6,6 +6,7 @@
  * @import * as Preset from "@docusaurus/preset-classic";
  */
 import { createDocusaurusConfig } from "@goauthentik/docusaurus-config";
+
 import { createRequire } from "node:module";
 import remarkDirective from "remark-directive";
 
