@@ -12,11 +12,11 @@ export const VersionPicker: React.FC = () => {
     const hostname = useHostname();
     const prereleaseOrigin = usePrereleaseOrigin();
 
-    const pluginData = usePluginData("ak-releases-plugin", undefined, {
-        failfast: true,
-    }) as AKReleasesPluginData;
+    const pluginData = usePluginData("ak-releases-plugin", undefined) as
+        | AKReleasesPluginData
+        | undefined;
 
-    if (!pluginData.releases.length) return null;
+    if (!pluginData?.releases.length) return null;
 
     // return <VersionPickerLoader pluginData={pluginData} />;
 

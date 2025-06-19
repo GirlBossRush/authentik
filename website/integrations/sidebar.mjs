@@ -1,11 +1,11 @@
 /**
  * @file Sidebar configuration for the authentik integrations.
  *
- * @import { SidebarItemConfig } from "@docusaurus/plugin-content-docs-types"
+ * @import { SidebarItemCategoryConfig, SidebarItemConfig } from "@docusaurus/plugin-content-docs-types"
  */
 
 /**
- * @type {SidebarItemConfig[]}
+ * @satisfies {SidebarItemCategoryConfig[]}
  */
 const items = [
     {
@@ -244,20 +244,33 @@ function label(item) {
 const integrationsSidebar = {
     integrations: [
         {
-            type: "doc",
-            id: "index",
-        },
-        {
             type: "category",
-            label: "Applications",
-            collapsed: false,
+            label: "Integrations",
+            collapsible: false,
             link: {
                 type: "doc",
-                id: "services/index",
+                id: "index",
             },
-            items: items.sort((a, b) => {
-                return label(a).localeCompare(label(b));
-            }),
+            items: [
+                {
+                    type: "doc",
+                    label: "Applications",
+                    id: "applications",
+                },
+
+                ...items
+                    .toSorted((a, b) => label(a).localeCompare(label(b)))
+                    .map((item) => {
+                        if (item.type !== "category") return item;
+
+                        return {
+                            ...item,
+                            link: {
+                                type: "generated-index",
+                            },
+                        };
+                    }),
+            ],
         },
     ],
 };

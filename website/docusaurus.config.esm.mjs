@@ -18,11 +18,13 @@ import { fileURLToPath } from "node:url";
 import remarkDirective from "remark-directive";
 import remarkGithub, { defaultBuildUrl } from "remark-github";
 
-import remarkEnterpriseDirective from "./remark/enterprise-directive.mjs";
-import remarkLinkRewrite from "./remark/link-rewrite-directive.mjs";
-import remarkPreviewDirective from "./remark/preview-directive.mjs";
-import remarkSupportDirective from "./remark/support-directive.mjs";
-import remarkVersionDirective from "./remark/version-directive.mjs";
+import {
+    remarkEnterpriseDirective,
+    remarkLinkRewrite,
+    remarkPreviewDirective,
+    remarkSupportDirective,
+    remarkVersionDirective,
+} from "./remark/index.mjs";
 
 const require = createRequire(import.meta.url);
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
@@ -46,7 +48,10 @@ await Promise.all([
 
 const beforeDefaultRemarkPlugins = [
     remarkDirective,
-    remarkLinkRewrite(new Map([["/integrations", "https://integrations.goauthentik.io"]])),
+    remarkLinkRewrite([
+        // ---
+        ["/integrations", "https://integrations.goauthentik.io"],
+    ]),
     remarkVersionDirective,
     remarkEnterpriseDirective,
     remarkPreviewDirective,
@@ -110,7 +115,7 @@ const config = {
                     id: "docs",
                     routeBasePath: "/",
                     path: "docs",
-                    sidebarPath: "./sidebars/docs.mjs",
+                    sidebarPath: "./docs/sidebar.mjs",
                     showLastUpdateTime: false,
                     editUrl: "https://github.com/goauthentik/authentik/edit/main/website/",
                     beforeDefaultRemarkPlugins,
