@@ -2,7 +2,6 @@
 title: Go API Client
 sidebar_label: Golang
 description: A Golang client for the authentik API.
-
 ---
 
 The [Go API client](https://pkg.go.dev/goauthentik.io/api/v3) is generated using the [OpenAPI Generator](https://openapi-generator.tech/) and the [OpenAPI v3 schema](https://goauthentik.io/api/schema.yml).
