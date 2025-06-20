@@ -4,9 +4,8 @@
  */
 /* eslint-disable no-console */
 // @ts-check
-import { exec, execSync, spawn } from "node:child_process";
+import { exec, spawn } from "node:child_process";
 import os from "node:os";
-import { join as joinPath, resolve as resolvePath } from "node:path";
 import v8 from "node:v8";
 import pidtree from "pidtree";
 import pidusage from "pidusage";
@@ -110,14 +109,6 @@ function runBuild() {
         });
         console.log("");
     }
-
-    console.log("Linking docusaurus-config...");
-
-    execSync("npm link", {
-        cwd: resolvePath(joinPath(process.cwd(), "..", "packages", "docusaurus-config")),
-    });
-
-    execSync("npm link @goauthentik/docusaurus-config");
 
     console.log("Starting build process with memory tracking...");
 
