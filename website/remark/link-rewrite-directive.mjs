@@ -18,9 +18,8 @@ export function remarkLinkRewrite(rewrites) {
         /**
          * @param {Root} tree The MDAST tree to transform.
          */
-        return async (tree) => {
-            visit(tree, (node) => {
-                if (node.type !== "link") return SKIP;
+        return (tree) => {
+            visit(tree, "link", (node) => {
 
                 for (const [pattern, replacement] of map) {
                     if (!node.url.startsWith(pattern)) continue;
