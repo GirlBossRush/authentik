@@ -67,70 +67,82 @@ const config = {
             ).toString(),
         },
     }),
-    presets: [
-        //#region Presets
+    presets: Date.now()
+        ? []
+        : [
+              //#region Presets
 
-        [
-            "@docusaurus/preset-classic",
-            /** @type {Preset.Options} */ ({
-                theme: {
-                    customCss: require.resolve("@goauthentik/docusaurus-config/css/index.css"),
-                },
+              [
+                  "@docusaurus/preset-classic",
+                  /** @type {Preset.Options} */ ({
+                      theme: {
+                          customCss: require.resolve(
+                              "@goauthentik/docusaurus-config/css/index.css",
+                          ),
+                      },
 
-                docs: {
-                    id: "docs",
-                    routeBasePath: "/",
-                    path: "docs",
-                    sidebarPath: "./docs/sidebar.mjs",
-                    showLastUpdateTime: false,
-                    editUrl: "https://github.com/goauthentik/authentik/edit/main/website/",
+                      docs: {
+                          id: "docs",
+                          routeBasePath: "/",
+                          path: "docs",
+                          sidebarPath: "./docs/sidebar.mjs",
+                          showLastUpdateTime: false,
+                          editUrl: "https://github.com/goauthentik/authentik/edit/main/website/",
 
-                    //#region Docs Plugins
+                          //#region Docs Plugins
 
-                    beforeDefaultRemarkPlugins: [
-                        remarkDirective,
-                        remarkLinkRewrite([
-                            // ---
-                            ["/integrations", "https://integrations.goauthentik.io"],
-                        ]),
-                        remarkVersionDirective,
-                        remarkEnterpriseDirective,
-                        remarkPreviewDirective,
-                        remarkSupportDirective,
-                    ],
+                          beforeDefaultRemarkPlugins: [
+                              remarkDirective,
+                              remarkLinkRewrite([
+                                  // ---
+                                  ["/integrations", "https://integrations.goauthentik.io"],
+                              ]),
+                              remarkVersionDirective,
+                              remarkEnterpriseDirective,
+                              remarkPreviewDirective,
+                              remarkSupportDirective,
+                          ],
 
-                    remarkPlugins: [
-                        [remarkNPM2Yarn, { sync: true }],
-                        [
-                            remarkGithub,
-                            {
-                                repository: "goauthentik/authentik",
-                                /**
-                                 * @param {BuildUrlValues} values
-                                 */
-                                buildUrl: (values) => {
-                                    // Only replace issues and PR links
-                                    return values.type === "issue" || values.type === "mention"
-                                        ? defaultBuildUrl(values)
-                                        : false;
-                                },
-                            },
-                        ],
-                    ],
+                          remarkPlugins: [
+                              [remarkNPM2Yarn, { sync: true }],
+                              [
+                                  remarkGithub,
+                                  {
+                                      repository: "goauthentik/authentik",
+                                      /**
+                                       * @param {BuildUrlValues} values
+                                       */
+                                      buildUrl: (values) => {
+                                          // Only replace issues and PR links
+                                          return values.type === "issue" ||
+                                              values.type === "mention"
+                                              ? defaultBuildUrl(values)
+                                              : false;
+                                      },
+                                  },
+                              ],
+                          ],
 
-                    //#endregion
-                },
-            }),
-        ],
+                          //#endregion
+                      },
+                  }),
+              ],
 
-        //#endregion
-    ],
+              //#endregion
+          ],
     plugins: [
         [
             "./releases/plugin.mjs",
             /** @type {ReleasesPluginOptions} */ ({
                 docsDirectory: join(__dirname, "docs"),
             }),
+        ],
+
+        [
+            "@docusaurus/theme-classic",
+            {
+                customCss: require.resolve("@goauthentik/docusaurus-config/css/index.css"),
+            },
         ],
 
         //#region API Docs
