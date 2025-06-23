@@ -57,6 +57,22 @@ function useBadgeLinterEffect() {
     }, [hide_title, id]);
 }
 
+interface BadgesProps {
+    badges: JSX.Element[];
+}
+
+const BadgeGroup: React.FC<BadgesProps> = ({ badges }) => {
+    if (!badges.length) return null;
+
+    return (
+        <p className="badge-group">
+            {badges.map((badge, index) => (
+                <React.Fragment key={index}>{badge}</React.Fragment>
+            ))}
+        </p>
+    );
+};
+
 const DocItemContent: React.FC<Props> = ({ children }) => {
     const syntheticTitle = useSyntheticTitle();
     const { frontMatter, metadata, contentTitle } = useDoc();
@@ -113,22 +129,6 @@ const DocItemContent: React.FC<Props> = ({ children }) => {
 
             <MDXContent>{children}</MDXContent>
         </div>
-    );
-};
-
-interface BadgesProps {
-    badges: JSX.Element[];
-}
-
-const BadgeGroup: React.FC<BadgesProps> = ({ badges }) => {
-    if (!badges.length) return null;
-
-    return (
-        <p className="badge-group">
-            {badges.map((badge, index) => (
-                <React.Fragment key={index}>{badge}</React.Fragment>
-            ))}
-        </p>
     );
 };
 

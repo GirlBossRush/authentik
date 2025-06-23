@@ -11,10 +11,13 @@
 import { createDocusaurusConfig } from "@goauthentik/docusaurus-config";
 
 import remarkNPM2Yarn from "@docusaurus/remark-plugin-npm2yarn";
+import { GlobExcludeDefault } from "@docusaurus/utils";
+import { createApiPageMD } from "docusaurus-plugin-openapi-docs/lib/markdown/index.js";
 import { cp } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { gzip } from "pako";
 import remarkDirective from "remark-directive";
 import remarkGithub, { defaultBuildUrl } from "remark-github";
 
@@ -86,12 +89,72 @@ const config = {
             },
         ],
 
-        //#region Documentation
+        //#region API Docs
 
         [
             "@docusaurus/plugin-content-docs",
             /** @type {DocsPluginOptions} */ ({
                 exclude: ["**/api/reference/**"],
+                numberPrefixParser: false,
+                id: "api",
+                path: "api",
+                routeBasePath: "api",
+                sidebarPath: "api/sidebar.mjs",
+                docItemComponent: "@theme/ApiItem",
+            }),
+        ],
+        [
+            "docusaurus-plugin-openapi-docs",
+            {
+                id: "open-api-docs",
+                docsPluginId: "api",
+                config: {
+                    authentik: /** @type {OpenApiPlugin.Options} */ ({
+                        template: "templates/api.mustache",
+                        markdownGenerators: {
+                            createApiPageMD: (pageData) => {
+                                const {
+                                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                                    info,
+                                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                                    postman,
+                                    ...coreAPI
+                                } = pageData.api;
+
+                                return [
+                                    createApiPageMD(pageData),
+                                    `export const api = "${btoa(
+                                        String.fromCharCode(
+                                            ...gzip(JSON.stringify(coreAPI), {
+                                                level: 9,
+                                            }),
+                                        ),
+                                    )}";`,
+                                ].join("\n");
+                            },
+                        },
+                        specPath: "static/schema.yml",
+                        outputDir: "api/reference",
+                        hideSendButton: true,
+                        disableCompression: true,
+                        sidebarOptions: {
+                            groupPathsBy: "tag",
+                        },
+                    }),
+                },
+            },
+        ],
+
+        //#region Documentation
+
+        [
+            "@docusaurus/plugin-content-docs",
+            /** @type {DocsPluginOptions} */ ({
+                exclude: [
+                    // ---
+                    ...GlobExcludeDefault,
+                    "**/api/reference/**",
+                ],
                 id: "docs",
                 routeBasePath: "/",
                 path: "docs",
@@ -133,44 +196,8 @@ const config = {
                 ],
             }),
         ],
-
-        //#endregion
-
-        //#region API Docs
-        [
-            "@docusaurus/plugin-content-docs",
-            /** @type {DocsPluginOptions} */ ({
-                exclude: ["**/api/reference/**"],
-                id: "api",
-                path: "api",
-                routeBasePath: "api",
-                sidebarPath: "api/sidebar.mjs",
-                docItemComponent: "@theme/ApiItem",
-                remarkPlugins: [
-                    // ---
-                    [remarkNPM2Yarn, { sync: true }],
-                ],
-                editUrl: "https://github.com/goauthentik/authentik/edit/main/website/",
-            }),
-        ],
-        [
-            "docusaurus-plugin-openapi-docs",
-            {
-                id: "open-api-docs",
-                docsPluginId: "api",
-                config: {
-                    authentik: /** @type {OpenApiPlugin.Options} */ ({
-                        specPath: "static/schema.yml",
-                        outputDir: "api/reference",
-                        hideSendButton: true,
-                        sidebarOptions: {
-                            groupPathsBy: "tag",
-                        },
-                    }),
-                },
-            },
-        ],
     ],
+    //#endregion
 
     //#endregion
 };

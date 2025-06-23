@@ -10,7 +10,6 @@ import { createAuth } from "@theme/ApiExplorer/Authorization/slice";
 import { createPersistanceMiddleware } from "@theme/ApiExplorer/persistanceMiddleware";
 import DocItemLayout from "@theme/ApiItem/Layout";
 import CodeBlock from "@theme/CodeBlock";
-import type { Props } from "@theme/DocItem";
 import DocItemMetadata from "@theme/DocItem/Metadata";
 import SkeletonLoader from "@theme/SkeletonLoader";
 import clsx from "clsx";
@@ -48,7 +47,11 @@ function base64ToUint8Array(base64: string) {
 
 function decodeAPI(encodedAPI: string): ApiItemType | null {
     try {
-        return JSON.parse(new TextDecoder().decode(ungzip(base64ToUint8Array(encodedAPI))));
+        return JSON.parse(
+            ungzip(base64ToUint8Array(encodedAPI), {
+                to: "string",
+            }),
+        );
     } catch (_error) {
         return null;
     }
@@ -75,9 +78,11 @@ const APIItemScheme: React.FC<APIItemSchemeProps> = (props) => {
                             <MDXComponent />
                         </div>
                         <div className="col col--5 openapi-right-panel__container">
-                            <CodeBlock language="json" title={`${frontMatter.title}`}>
-                                {JSON.stringify(sample, null, 2)}
-                            </CodeBlock>
+                            {sample ? (
+                                <CodeBlock language="json" title={`${frontMatter.title}`}>
+                                    {JSON.stringify(sample, null, 2)}
+                                </CodeBlock>
+                            ) : null}
                         </div>
                     </div>
                 </DocItemLayout>
@@ -86,8 +91,12 @@ const APIItemScheme: React.FC<APIItemSchemeProps> = (props) => {
     );
 };
 
+interface MDXAPIComponent extends PropDocContent {
+    api?: string;
+}
+
 interface APIItemAPIProps {
-    content: PropDocContent;
+    content: MDXAPIComponent;
     api: ApiItemType;
 }
 
@@ -114,16 +123,16 @@ const APIItemAPI: React.FC<APIItemAPIProps> = ({ content: MDXComponent, api }) =
         // Init store for CSR to hydrate components
         // Create list of only 2XX response content types to create request samples from
         const acceptArrayInit: string[][] = [];
-        for (const [code, content] of Object.entries(api?.responses ?? [])) {
+        for (const [code, content] of Object.entries(api.responses ?? [])) {
             if (statusRegex.test(code)) {
                 acceptArrayInit.push(Object.keys(content.content ?? {}));
             }
         }
         const acceptArray = acceptArrayInit.flat();
 
-        const content = api?.requestBody?.content ?? {};
+        const content = api.requestBody?.content ?? {};
         const contentTypeArray = Object.keys(content);
-        const servers = api?.servers ?? [];
+        const servers = api.servers ?? [];
         const params = {
             path: [] as ParameterObject[],
             query: [] as ParameterObject[],
@@ -131,15 +140,15 @@ const APIItemAPI: React.FC<APIItemAPIProps> = ({ content: MDXComponent, api }) =
             cookie: [] as ParameterObject[],
         };
 
-        api?.parameters?.forEach((param: { in: "path" | "query" | "header" | "cookie" }) => {
+        api.parameters?.forEach((param: { in: "path" | "query" | "header" | "cookie" }) => {
             const paramType = param.in;
             const paramsArray: ParameterObject[] = params[paramType];
             paramsArray.push(param as ParameterObject);
         });
 
         const auth = createAuth({
-            security: api?.security,
-            securitySchemes: api?.securitySchemes,
+            security: api.security,
+            securitySchemes: api.securitySchemes,
             options,
         });
 
@@ -199,15 +208,18 @@ const APIItemAPI: React.FC<APIItemAPIProps> = ({ content: MDXComponent, api }) =
     );
 };
 
-const ApiItem: React.FC<Props> = ({ content: MDXComponent }) => {
+interface APIItemProps {
+    content: MDXAPIComponent;
+}
+
+const ApiItem: React.FC<APIItemProps> = ({ content: MDXComponent }) => {
     const frontMatter = MDXComponent.frontMatter as ApiFrontMatter;
-    const encodedAPI = frontMatter.api;
 
     if (frontMatter.schema) {
         return <APIItemScheme content={MDXComponent} />;
     }
 
-    if (!encodedAPI) {
+    if (!MDXComponent.api) {
         // Non-API docs
         return (
             <DocProvider content={MDXComponent}>
@@ -228,7 +240,7 @@ const ApiItem: React.FC<Props> = ({ content: MDXComponent }) => {
     return (
         <BrowserOnly fallback={<SkeletonLoader size="lg" />}>
             {() => {
-                const api = decodeAPI(encodedAPI);
+                const api = decodeAPI(MDXComponent.api!);
 
                 if (!api) {
                     console.error("Failed to decode API", frontMatter);
