@@ -2,7 +2,7 @@
  * @file Docusaurus config.
  *
  * @import { Config } from "@docusaurus/types";
- * @import { UserThemeConfigExtra } from "@goauthentik/docusaurus-config";
+ * @import { UserThemeConfig, UserThemeConfigExtra } from "@goauthentik/docusaurus-config";
  * @import * as Preset from "@docusaurus/preset-classic";
  */
 import { createDocusaurusConfig } from "@goauthentik/docusaurus-config";
@@ -45,7 +45,7 @@ const beforeDefaultRemarkPlugins = [
 const config = {
     url: "https://integrations.goauthentik.io",
     themes: ["@docusaurus/theme-mermaid"],
-    themeConfig: /** @type {UserThemeConfigExtra} */ ({
+    themeConfig: /** @type {UserThemeConfig & UserThemeConfigExtra} */ ({
         navbarReplacements: {
             INTEGRATIONS_URL: "/",
         },

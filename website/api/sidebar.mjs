@@ -20,6 +20,7 @@ const sidebar = {
         {
             type: "category",
             label: "API Overview",
+            className: "api-overview",
             collapsed: false,
             collapsible: false,
 
@@ -54,6 +55,7 @@ const sidebar = {
         {
             type: "category",
             label: "API Reference",
+            className: "api-reference",
             collapsed: false,
             collapsible: false,
             link: {

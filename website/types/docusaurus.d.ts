@@ -10,14 +10,6 @@
  * project references, allowing for better type checking and autocompletion.
  */
 
-/// <reference types="docusaurus-theme-openapi-docs" />
-/// <reference types="docusaurus-plugin-openapi-docs" />
-
-declare module "@theme/RequestSchema";
-declare module "@theme/ParamsDetails";
-declare module "@theme/StatusCodes";
-declare module "@theme/OperationTabs";
-
 declare module "@docusaurus/plugin-content-docs-types" {
     export * from "@docusaurus/plugin-content-docs";
     export * from "@docusaurus/plugin-content-docs/src/types.ts";
@@ -29,6 +21,7 @@ declare module "@docusaurus/plugin-content-docs/src/sidebars/types" {
 }
 
 declare module "@docusaurus/plugin-content-docs/client" {
+    export * from "@docusaurus/plugin-content-docs/lib/client/doc.js";
     export * from "@docusaurus/plugin-content-docs/lib/client/docSidebarItemsExpandedState.js";
     export * from "@docusaurus/plugin-content-docs/lib/client/docsUtils.js";
 

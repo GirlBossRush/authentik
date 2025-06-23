@@ -2,7 +2,7 @@
  * @file Docusaurus config.
  *
  * @import { Config } from "@docusaurus/types";
- * @import { UserThemeConfigExtra } from "@goauthentik/docusaurus-config";
+ * @import { UserThemeConfig, UserThemeConfigExtra } from "@goauthentik/docusaurus-config";
  * @import { Options as DocsPluginOptions } from "@docusaurus/plugin-content-docs";
  * @import * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
  * @import { BuildUrlValues } from "remark-github";
@@ -52,7 +52,7 @@ await Promise.all([
  */
 const config = {
     themes: ["@docusaurus/theme-mermaid", "docusaurus-theme-openapi-docs"],
-    themeConfig: /** @type {UserThemeConfigExtra} */ ({
+    themeConfig: /** @type {UserThemeConfig & UserThemeConfigExtra} */ ({
         navbarReplacements: {
             DOCS_URL: "/",
         },
@@ -63,6 +63,12 @@ const config = {
             externalUrlRegex: new RegExp(
                 "(:\\/\\/goauthentik\\.io|integrations\\.goauthentik\\.io)",
             ).toString(),
+        },
+
+        docs: {
+            sidebar: {
+                hideable: true,
+            },
         },
     }),
     plugins: [

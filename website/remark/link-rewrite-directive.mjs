@@ -20,7 +20,6 @@ export function remarkLinkRewrite(rewrites) {
          */
         return (tree) => {
             visit(tree, "link", (node) => {
-
                 for (const [pattern, replacement] of map) {
                     if (!node.url.startsWith(pattern)) continue;
 
