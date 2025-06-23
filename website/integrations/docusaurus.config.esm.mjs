@@ -8,8 +8,6 @@
 import { createDocusaurusConfig } from "@goauthentik/docusaurus-config";
 
 import { createRequire } from "node:module";
-import * as path from "node:path";
-import { fileURLToPath } from "node:url";
 import remarkDirective from "remark-directive";
 
 import {
@@ -21,7 +19,6 @@ import {
 } from "../remark/index.mjs";
 
 const require = createRequire(import.meta.url);
-const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 //#region Docs Plugins
 
@@ -70,15 +67,6 @@ const config = {
                 },
 
                 docs: {
-                    // include: [
-                    //     // ---
-                    //     __dirname,
-                    //     path.join(__dirname, "**/*"),
-                    // ],
-                    exclude: [
-                        path.resolve(__dirname, "..", "api", "**/*"),
-                        path.resolve(__dirname, "..", "docs", "**/*"),
-                    ],
                     id: "integrations",
                     path: "integrations",
                     routeBasePath: "/",
