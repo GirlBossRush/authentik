@@ -54,6 +54,7 @@ await Promise.all([
  * @satisfies {Partial<Config>}
  */
 const config = {
+    'title': 'whatever',
     themes: ["@docusaurus/theme-mermaid", "docusaurus-theme-openapi-docs"],
     themeConfig: /** @type {UserThemeConfig & UserThemeConfigExtra} */ ({
         navbarReplacements: {
