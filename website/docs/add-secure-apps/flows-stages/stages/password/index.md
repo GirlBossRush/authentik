@@ -23,7 +23,7 @@ The stage supports authentik's built-in password database, app passwords, LDAP-b
 
 ## Flow integration
 
-This stage is typically bound after [Identification](../identification/index.md) and before [Authenticator Validation](../authenticator_validate/index.md) or [User Login](../user_login/index.md).
+This stage is typically bound after an [Identification](../identification/index.md) stage and before a [Authenticator Validation](../authenticator_validate/index.md) or [User Login](../user_login/index.md) stage.
 
 If the [Identification stage](../identification/index.md) has its **Password stage** option set, the password prompt is rendered as part of the identification step and the Password stage should not also be bound separately in the same flow.
 
@@ -37,10 +37,10 @@ Service accounts have automatically generated app passwords. Those can be viewed
 
 There are two common ways to avoid prompting for a password:
 
-- Use [Authenticator Validation](../authenticator_validate/index.md#passwordless-authentication) with WebAuthn for a dedicated passwordless flow.
+- Use a [Authenticator Validation](../authenticator_validate/index.md#passwordless-authentication) stage with WebAuthn for a dedicated passwordless flow.
 - Conditionally skip the Password stage by binding a policy to its stage binding.
 
-For example, to skip the Password stage when the user already has a confirmed WebAuthn device:
+For example, to skip the Password stage when the user already has a confirmed WebAuthn authenticator:
 
 ```python
 from authentik.stages.authenticator_webauthn.models import WebAuthnDevice
