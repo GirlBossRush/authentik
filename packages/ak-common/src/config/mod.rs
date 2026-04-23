@@ -400,7 +400,7 @@ mod tests {
         let arbiter = tasks.arbiter();
         let mut events_rx = arbiter.events_subscribe();
 
-        super::run(&mut tasks).expect("failed to start watcher");
+        super::start(&mut tasks).expect("failed to start watcher");
 
         assert_eq!(super::get().secret_key, "my_secret_key");
         assert_eq!(super::get().postgresql.password, "my_postgres_pass");
