@@ -57,7 +57,7 @@ impl Outpost for ProxyOutpost {
                     None,
                     None,
                     Some(page),
-                    Some(2_i32),
+                    Some(100_i32),
                     None,
                 )
             },
