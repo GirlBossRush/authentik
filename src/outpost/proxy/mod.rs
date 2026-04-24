@@ -1,12 +1,16 @@
-use std::sync::Arc;
+use std::{collections::HashMap, sync::Arc};
 
 use ak_client::apis::outposts_api::outposts_proxy_list;
 use ak_common::{Tasks, api::fetch_all};
+use arc_swap::ArcSwap;
 use argh::FromArgs;
 use eyre::Result;
-use tracing::{debug, error, instrument, warn};
+use tracing::{debug, error, info, instrument, warn};
 
+use crate::outpost::proxy::application::Application;
 use crate::outpost::{Outpost, OutpostController};
+
+mod application;
 
 #[derive(Debug, Default, FromArgs, PartialEq, Eq)]
 /// Run the authentik proxy outpost.
@@ -19,6 +23,7 @@ pub(crate) struct Cli {}
 
 pub(crate) struct ProxyOutpost {
     controller: Arc<OutpostController>,
+    applications: ArcSwap<HashMap<String, Application>>,
 }
 
 impl Outpost for ProxyOutpost {
@@ -28,7 +33,10 @@ impl Outpost for ProxyOutpost {
 
     #[instrument(skip_all)]
     async fn new(controller: Arc<OutpostController>) -> Result<Self> {
-        Ok(Self { controller })
+        Ok(Self {
+            controller,
+            applications: ArcSwap::from_pointee(HashMap::with_capacity(0)),
+        })
     }
 
     fn start(&self, _tasks: &mut Tasks) -> Result<()> {
@@ -37,6 +45,11 @@ impl Outpost for ProxyOutpost {
 
     #[instrument(skip_all)]
     async fn refresh(&self) -> Result<()> {
+        debug!(
+            outpost_pk = %self.controller.outpost.load().pk,
+            "requesting providers for outpost"
+        );
+
         let providers = fetch_all(
             |page| {
                 outposts_proxy_list(
@@ -44,7 +57,7 @@ impl Outpost for ProxyOutpost {
                     None,
                     None,
                     Some(page),
-                    Some(100),
+                    Some(2_i32),
                     None,
                 )
             },
@@ -52,24 +65,43 @@ impl Outpost for ProxyOutpost {
             |r| r.results,
         )
         .await
-        .map_err(|err| {
-            error!(?err, "failed to fetch providers");
-            err
-        })?;
+        .inspect_err(|err| error!(?err, "failed to fetch providers"))?;
+        debug!(count = providers.len(), "fetched providers");
+
         if providers.is_empty() && !self.controller.is_embedded() {
             warn!(
                 "no providers assigned to this outpost, check outpost configuration in authentik"
             );
         }
 
-        for provider in providers {
+        for (i, provider) in providers.iter().enumerate() {
             debug!(
+                index = i,
                 name = provider.name,
                 external_host = provider.external_host,
                 assigned_to_app = provider.assigned_application_name,
                 "provider details"
             );
         }
+
+        let mut apps = HashMap::with_capacity(providers.len());
+
+        for provider in providers {
+            let Ok(application) = Application::new(self, &provider)
+                .inspect_err(|err| warn!(?err, "failed to setup application, skipping provider"))
+            else {
+                continue;
+            };
+            info!(
+                name = provider.name,
+                host = application.host,
+                "loaded application"
+            );
+
+            apps.insert(application.host.clone(), application);
+        }
+
+        self.applications.swap(Arc::new(apps));
 
         Ok(())
     }

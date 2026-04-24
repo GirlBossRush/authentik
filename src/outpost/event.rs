@@ -260,7 +260,7 @@ async fn watch_events<O: Outpost>(
     controller: Arc<OutpostController>,
     outpost: Arc<O>,
 ) -> Result<()> {
-    const MAX_BACKOFF: Duration = Duration::from_secs(300);
+    const MAX_BACKOFF: Duration = Duration::from_mins(5);
     let mut backoff = Duration::from_secs(1);
     let mut attempt: u32 = 0;
 
