@@ -1,9 +1,19 @@
+use ak_axum::extract::host::Host;
+use axum::extract::State;
+use axum::http::Method;
+use axum::routing::any;
+use metrics::{Histogram, histogram};
 use std::{collections::HashMap, sync::Arc};
+use tokio::time::Instant;
 
+use ak_axum::router::wrap_router;
 use ak_client::apis::outposts_api::outposts_proxy_list;
 use ak_common::{Tasks, api::fetch_all};
 use arc_swap::ArcSwap;
 use argh::FromArgs;
+use axum::Router;
+use axum::http::StatusCode;
+use axum::response::IntoResponse;
 use eyre::Result;
 use tracing::{debug, error, info, instrument, warn};
 
@@ -101,7 +111,7 @@ impl Outpost for ProxyOutpost {
             apps.insert(application.host.clone(), application);
         }
 
-        self.applications.swap(Arc::new(apps));
+        self.applications.store(Arc::new(apps));
 
         Ok(())
     }
@@ -111,4 +121,31 @@ impl Outpost for ProxyOutpost {
         warn!(?_event, "removing session");
         Ok(())
     }
+}
+
+async fn handle_ping(
+    method: Method,
+    Host(host): Host,
+    State(outpost): State<Arc<ProxyOutpost>>,
+) -> impl IntoResponse {
+    let start = Instant::now();
+    histogram!(
+        "authentik_outpost_proxy_request_duration_seconds",
+        "outpost_name" => outpost.controller.outpost.load().name.clone(),
+        "method" => method.to_string(),
+        "host" => host,
+        "type" => "ping",
+    )
+    .record(start.elapsed().as_secs_f64());
+    StatusCode::NO_CONTENT
+}
+
+fn build_router(outpost: Arc<ProxyOutpost>) -> Router {
+    // TODO: static files
+    wrap_router(
+        Router::new()
+            .route("outpost.goauthentik.io/ping", any(handle_ping))
+            .with_state(outpost),
+        true,
+    )
 }
